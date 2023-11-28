@@ -2,6 +2,7 @@ const contenedorTarjetas = document.getElementById("productos-container");
 
 /* TARJETAS DE CADA CARRERA */
 function crearTarjetasCarreras(productos) {
+    const productos = JSON.parse(localStorage.getItem("carreras"));
     productos.forEach(producto => {
         const nuevaCarrera = document.createElement("div");
         nuevaCarrera.classList = "tarjeta-producto";
@@ -10,8 +11,7 @@ function crearTarjetasCarreras(productos) {
             <h3>${producto.nombre}</h3>
             <h3>${producto.distancia}</h3>
             <p class="precio">$${producto.precio}</p>
-            <button class="bton">Agregar al carrito</button>
-            `;
+            <button class="bton">Agregar al carrito</button>`;
         contenedorTarjetas.appendChild(nuevaCarrera);
 
         const button = nuevaCarrera.querySelector(".bton");
