@@ -131,6 +131,12 @@ h3 {
 }
 p{
     text-align: center;
+    justify-content: space-between;
+}
+.compra-final{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 section .tarjeta-producto{

@@ -112,6 +112,7 @@ function eliminarDelCarro(producto){
         stock[indiceProducto].cantidad--;
     }
     localStorage.setItem("carreras",JSON.stringify(stock));
+    
   
     
 
@@ -140,11 +141,12 @@ function totalesActualizados(){
         cantidaCarreras.innerText = unidades;
         SumaTotal.innerText = precio;
         
-     }
+    }
    
 }
 
 actualizarCarrito();
+
 
 
 function messageVacio(){
