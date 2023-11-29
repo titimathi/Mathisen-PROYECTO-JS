@@ -29,6 +29,8 @@ function crearTarjetasCarreras(productos) {
     });
 }
 crearTarjetasCarreras(carreras); 
+
+
 function agregarAlCarrito(producto) {
     let stock = localStorage.getItem('carreras');
     let cantidadFinal;
@@ -58,6 +60,7 @@ function agregarAlCarrito(producto) {
         localStorage.setItem('carreras', JSON.stringify(newstock));
     }
     actualizarCarrito();
+
     function almacenaNuevoProducto(producto) {
         const nuevoProducto = producto;
         nuevoProducto.cantidad = 1;
@@ -65,6 +68,8 @@ function agregarAlCarrito(producto) {
     }
 
 }
+
+
 function actualizarCarrito() {
 
     const stock = JSON.parse(localStorage.getItem('carreras')) || [];

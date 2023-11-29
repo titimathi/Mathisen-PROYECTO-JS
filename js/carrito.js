@@ -27,8 +27,8 @@ function crearTarjetasCarrerasCarro() {
             nuevaCarrera
             .getElementsByTagName("button")[0]
             .addEventListener("click", (e) =>{
-                const cuentaElement = e.target.parentElement.getElementsByTagName("button")[0];
-                cuentaElement.innerText = eliminarDelCarro(producto);
+                eliminarDelCarro(producto);
+                crearTarjetasCarrerasCarro();
                 actualizarCarrito();
             });
         });
@@ -92,6 +92,14 @@ function eliminarDelCarro(producto){
     } else{
         stock[indiceProducto].cantidad--;
     }
-    localStorage.setItem("carreras",JSON.stringify(stock))
+    localStorage.setItem("carreras",JSON.stringify(stock));
+
+    /** eliminar */
+    const tarjetaAEliminar = contenedorTarjeta.querySelector(`.bton[data-producto-id="${producto.id}"]`);
+    if (tarjetaAEliminar) {
+        tarjetaAEliminar.closest('.carrito-container').remove();
+    }
+
+    return stock.reduce((acum, current) => acum + current.cantidad, 0);
 }
 actualizarCarrito();
