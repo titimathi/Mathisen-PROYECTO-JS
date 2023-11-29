@@ -80,6 +80,17 @@ a:hover{
     border-radius: 8px;
     box-shadow: #f00f25(0, 0, 0, 0.35) 0px 5px 15px;
 }
+button {
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+    color: beige;
+    padding: 10px 10px;
+    background-color: #dc3545;
+    border-color: #c76771;
+    border-radius: 8px;
+    box-shadow: #f00f25(0, 0, 0, 0.35) 0px 5px 15px;
+}
 .bton:hover{
     
     color: beige;
@@ -116,6 +127,7 @@ section{
 h3 {
     text-align: center;
     color: #c76771;
+    
 }
 p{
     text-align: center;
@@ -156,6 +168,11 @@ section .tarjeta-carrito img {
 .compra-final{
     display: flex;
     align-items: center;
+
+}
+
+.carrito-vacio{
+    display: none;
 
 }
 footer{
