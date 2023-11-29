@@ -1,7 +1,5 @@
 const contenedorTarjeta = document.getElementById("carrito-container");
 const cuentaCarritoE = document.getElementById("cuenta-carrito");
-const valor = document.querySelector(".precio")
-const agregar = document.querySelector(".btn")
 const vaciarCarrito = document.getElementById("vaciar")
 const SumaTotal = document.getElementById("valor-final")
 const cantidaCarreras = document.getElementById("cantidad")
@@ -10,7 +8,7 @@ const cantidaCarreras = document.getElementById("cantidad")
 
 /** TARJETAS AGREGADAS AL CARRITO */
 function crearTarjetasCarrerasCarro() {
-
+    contenedorTarjeta.innerHTML = "";
     const productos = JSON.parse(localStorage.getItem("carreras"));
     if (productos && productos.length > 0) {
         productos.forEach(producto => {
@@ -26,11 +24,18 @@ function crearTarjetasCarrerasCarro() {
                 </div>
             `;
             contenedorTarjeta.appendChild(nuevaCarrera);
+            nuevaCarrera
+            .getElementsByTagName("button")[0]
+            .addEventListener("click", (e) =>{
+                const cuentaElement = e.target.parentElement.getElementsByTagName("button")[0];
+                cuentaElement.innerText = eliminarDelCarro(producto);
+                actualizarCarrito();
+            });
         });
     }
 }
 crearTarjetasCarrerasCarro();
-
+/** Agrega al carrito */
 
 function agregarAlCarrito(producto) {
     let stock = localStorage.getItem('carreras');
@@ -54,25 +59,39 @@ function agregarAlCarrito(producto) {
 
         } else {
 
-            cantidadFinal != 1;
-            return ("ha superado la cantidad de inscripciones")
+            !newstock[indiceProducto].cantidad++;
+            cantidadFinal = newstock[indiceProducto].cantidad;
         }
 
         localStorage.setItem('carreras', JSON.stringify(newstock));
     }
     actualizarCarrito();
 }
-
+/** Almacena nueva carrera */
 function almacenaNuevoProducto(producto) {
     const nuevoProducto = producto;
     nuevoProducto.cantidad = 1;
     return nuevoProducto;
 }
 
+/** Actualizar carro */
 function actualizarCarrito() {
 
     const stock = JSON.parse(localStorage.getItem('carreras')) || [];
     const cuenta = stock.reduce((acum, current) => acum + current.cantidad, 0);
     cuentaCarritoE.innerText = cuenta;
+}
+actualizarCarrito();
+
+/** Eliminar del carro */
+function eliminarDelCarro(producto){
+    const stock = JSON.parse(localStorage.getItem('carreras'));
+    const indiceProducto = stock.findIndex(item => item.id === producto.id);
+    if(stock[indiceProducto].cantidad === 1){
+        stock.splice(indiceProducto,1);
+    } else{
+        stock[indiceProducto].cantidad--;
+    }
+    localStorage.setItem("carreras",JSON.stringify(stock))
 }
 actualizarCarrito();
