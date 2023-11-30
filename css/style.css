@@ -41,7 +41,13 @@ header{
     margin-top: 10px;
 }
 
+.img3{
+    display: flex;
+    margin-left: 110px;
+    width: 80%;
+    height: 80%;
 
+}
 
 header nav {
     display: flex;
